@@ -18,7 +18,6 @@ struct MeetingTimerView: View {
             Image("jar2").resizable()
                 .scaledToFit().overlay{
                     VStack {
-                        Text(speechRecognizer.transcript)
                         Text("Profanity Count")
                         Text("\(count)")
                     }

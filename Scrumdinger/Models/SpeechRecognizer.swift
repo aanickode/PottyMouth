@@ -35,7 +35,7 @@ actor SpeechRecognizer: ObservableObject {
     private let recognizer: SFSpeechRecognizer?
     private weak var timer: Timer?
     private var frequency: TimeInterval { 1.0 / 60.0 }
-    @MainActor var parsedCount: Int = 0
+    @MainActor var lastString: String = ""
     
     /**
      Initializes a new speech recognizer. If this is the first time you've used the class, it
@@ -152,21 +152,15 @@ actor SpeechRecognizer: ObservableObject {
     
     nonisolated private func transcribe(_ message: String) {
         Task { @MainActor in
-            print(message)
-            transcript = message.lowercased()
+            transcript = String(message.lowercased().suffix(message.count - lastString.count))
+            print(transcript)
             let components = transcript.components(separatedBy: " ")
-//            for i in stride(from: parsedCount, to: components.count, by: 1){
-//                if (await profanity.contains(components[i])) {
-//                    parsedCount = parsedCount + 1
-//                    profanityCount = profanityCount + 1
-//                }
-//            }
-            profanityCount = 0
             for word in components {
                 if (await profanity.contains(word)) {
                     profanityCount = profanityCount + 1
                 }
             }
+            lastString = message.lowercased()
         }
     }
     
