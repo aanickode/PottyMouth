@@ -13,6 +13,7 @@ import RealmSwift
 struct AnalyticsView: View {
     @State var words: [String] = []
     @State var frequencies: [Int] = []
+    @State var tuples: [(freq:Int, wrds:String)] = []
     @State private var word = ""
     @State private var incorrectInfo = 0
     let realm = try! Realm()
@@ -44,11 +45,11 @@ struct AnalyticsView: View {
             }
             Text("Frequency Counter")
             
-            ForEach(0...words.count, id: \.self) {idx in
-                if (idx != words.count) {
+            ForEach(0...tuples.count, id: \.self) {idx in
+                if (idx != tuples.count) {
                     HStack(spacing: 10){
-                        Text(words[idx])
-                        Text("\(frequencies[idx])")
+                        Text(tuples[idx].wrds)
+                        Text("\(tuples[idx].freq)")
                     }
                 }
             }
@@ -65,9 +66,14 @@ struct AnalyticsView: View {
             $0.password == savedPassword && $0.username == savedUsername
         }
         if let user = users.first {
-            words = user.freqMap.keys
-            frequencies = user.freqMap.values
+            tuples = []
+            for key in user.freqMap.keys {
+                if let num = user.freqMap[key] {
+                    tuples.append((num, key))
+                }
+            }
         }
+        tuples.sort(by: {$0.freq > $1.freq})
     }
     
     func addWord(word : String) {
