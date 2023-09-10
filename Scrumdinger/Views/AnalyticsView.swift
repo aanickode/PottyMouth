@@ -22,7 +22,8 @@ struct AnalyticsView: View {
 
     var body: some View {
         VStack{
-            ProgressView(value: totalCount, total: 50.0)
+            Text("Try to keep your daily profanity use below 50 words!").font(.system(size:12))
+            ProgressView(value: totalCount, total: 50.0).padding()
             TextField("Add or delete words", text: $word)
                 .padding()
                 .frame(width: 300, height: 50)
