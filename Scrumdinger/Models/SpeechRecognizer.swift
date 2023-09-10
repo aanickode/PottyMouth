@@ -168,15 +168,26 @@ actor SpeechRecognizer: ObservableObject {
         Task { @MainActor in
             transcript = String(message.lowercased().suffix(max(message.count - lastString.count, 0)))
             let components = transcript.components(separatedBy: " ")
+            var map = [String : Int]()
             for word in components {
                 if (await profanitySet.contains(word)) {
+                    if map.keys.contains(word) {
+                        map[word]! += 1
+                    } else {
+                        map[word] = 1
+                    }
                     profanityCount = profanityCount + 1
+                    UIDevice.vibrate()
                 }
             }
             if let user = users.first {
                 try! realm.write {
                     user.totalScore = oldScore + profanityCount
+                    for key in map.keys {
+                        user.freqMap[key] = (user.freqMap[key] ?? 0) + map[key]!
+                    }
                 }
+                print(user.freqMap)
             }
             lastString = message.lowercased()
         }
@@ -212,5 +223,11 @@ extension AVAudioSession {
                 continuation.resume(returning: authorized)
             }
         }
+    }
+}
+
+extension UIDevice {
+    static func vibrate() {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     }
 }

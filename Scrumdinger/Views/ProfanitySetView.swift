@@ -14,7 +14,7 @@ struct ProfanitySetView: View {
     @State var counter = 0
     @State var word : String = ""
     @State var isFinished = false
-    let realm = try! Realm()
+    let configuration = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
     
     var body: some View {
         NavigationView{
@@ -63,6 +63,7 @@ struct ProfanitySetView: View {
     
     func completeSignUp() {
         isFinished = true
+        let realm = try! Realm(configuration: configuration)
         let savedUsername = UserDefaults.standard.object(forKey: "username") as? String ?? ""
         let savedPassword = UserDefaults.standard.object(forKey: "password") as? String ?? ""
         let users = realm.objects(UserInfo.self).where{

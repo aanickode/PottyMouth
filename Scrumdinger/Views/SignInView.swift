@@ -14,7 +14,7 @@ struct SignInView: View {
     @State private var password = ""
     @State private var incorrectInfo = 0
     @State private var signUpComplete = false
-    let realm = try! Realm()
+    let configuration = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
     let defaults = UserDefaults.standard
     
     var body: some View {
@@ -50,7 +50,7 @@ struct SignInView: View {
                         .cornerRadius(10)
                         
                     }
-                    NavigationLink(destination: ProfanitySetView(), isActive: $signUpComplete){
+                    NavigationLink(destination: MeetingView(), isActive: $signUpComplete){
                     }
                 }
             }
@@ -59,6 +59,7 @@ struct SignInView: View {
         
     }
     func checkLogin(username: String, password: String){
+        let realm = try! Realm(configuration: configuration)
         let users = realm.objects(UserInfo.self)
         let user = users.where{
             $0.password == password && $0.username == username

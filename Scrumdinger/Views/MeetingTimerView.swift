@@ -5,6 +5,7 @@
 import SwiftUI
 import AVFoundation
 import RealmSwift
+import AudioToolbox
 
 struct MeetingTimerView: View {
     @StateObject var speechRecognizer = SpeechRecognizer()

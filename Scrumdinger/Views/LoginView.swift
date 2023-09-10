@@ -15,7 +15,7 @@ struct LoginView: View {
     @State private var incorrectInfo = 0
     @State private var showScreen = false
     @State private var signInScreen = false
-    let realm = try! Realm()
+    let configuration = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
     let defaults = UserDefaults.standard
     
     var body: some View {
@@ -69,6 +69,7 @@ struct LoginView: View {
     }
     
     func checkLogin(username: String, password: String){
+        let realm = try! Realm(configuration: configuration)
         let users = realm.objects(UserInfo.self)
         let user = users.where{
             $0.password == password && $0.username == username
