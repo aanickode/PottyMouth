@@ -1,5 +1,13 @@
-# Transcribing Speech to Text
+## Inspiration
+As kids, both of our parents used the swear jar tactic to prevent us from using bad language. Every time anyone in our household said a word that was on the "list", they were required to put a nickel into the swear jar. It proved to be a great incentivizer to not use any negative language and we had a lot of fun while enforcing the game! We also used a similar tactic while training for debate competitions in high school. While giving speeches, we had words we wanted to restrict while speaking such as "like", "very", and "uhm" and encouraged each other to find alternatives to improve our vocabulary. 
+To come to think of it, a swear jar type approach would have came incredibly handy in achieving our public speaking goals by preventing our team from overly utilizing such words. We struggled with enforcing accountability as it proves hard for someone to constantly keep track of which of these words you say and at what frequency you say them at. 
+Therefore, in order to solve this pressing humanitarian issue, we created PottyMouth: the world's first digital swear jar! 
+## What it does
+This jar not only counts the accumulation of the number of times you say these "no-no" words but also the frequency at which you say each word. PottyMouth allows the user to put in words they want to limit and with the permission of the user, it begins recording through the device's microphones. With this also working in the background, the user can resume their daily activities while PottyMouth records what they are saying. Every time, the program picks up a word on their list, it adds 1 to the total "profanity score" and also adds 1 to the word's frequency. The user can view the frequency they said each of their "no-no" words in the Analytics section. Here, they can also delete or add a word in real time, if their needs have changed. 
+This has several use cases as it can be used in the household, the classroom, or in a party setting. My parents could now use this digital swear jar without having to enforce the rules themselves to hold accountability. In educational contexts, students and teachers can improve their speaking habits and important classroom policies through looking at the statistics and analytics from this application. Lastly, in parties, we believe PottyMouth does not necessitate an explanation as there prove to be so many applications. 
+## How we built it
+We built the application to run on iOS using Swift. We used the MongoDB Realm database to store user information, however we strictly do not store the user's transcript due to privacy reasons. 
+## What's next for PottyMouth
+We hope to extend our use cases by creating packages for educational and charity contexts. Additionally, we plan on incorporating apps such as Venmo so users can possibly donate directly top charities depending on their score and so, we could add them to a weekly leaderboard to create a thriving online community on PottyMouth! 
 
-## Completed Project
-
-Explore the completed project for [Transcribing Speech to Text](https://developer.apple.com/tutorials/app-dev-training/transcribing-speech-to-text).
+In order to run, import the project on the GitHub link to Xcode and then run the iPhone simulator.
