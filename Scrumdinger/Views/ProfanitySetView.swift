@@ -74,6 +74,7 @@ struct ProfanitySetView: View {
             try! realm.write {
                 for word in profanityList {
                     user.profanitySet.append(word)
+                    user.freqMap[word] = 0
                 }
             }
         }

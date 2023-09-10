@@ -198,9 +198,12 @@ actor SpeechRecognizer: ObservableObject {
             }
             if let user = users.first {
                 try! realm.write {
-                    user.totalScore = oldScore + profanityCount
                     for key in map.keys {
                         user.freqMap[key] = (user.freqMap[key] ?? 0) + map[key]!
+                    }
+                    user.totalScore = 0
+                    for key in user.freqMap.keys {
+                        user.totalScore = user.totalScore + (user.freqMap[key] ?? 0)
                     }
                 }
             }

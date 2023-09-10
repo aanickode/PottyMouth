@@ -16,11 +16,13 @@ struct AnalyticsView: View {
     @State var tuples: [(freq:Int, wrds:String)] = []
     @State private var word = ""
     @State private var incorrectInfo = 0
+    @State private var totalCount = 0.0
     private var frequency: TimeInterval { 1.0 / 60.0 }
     let realm = try! Realm()
 
     var body: some View {
         VStack{
+            ProgressView(value: totalCount, total: 50.0)
             TextField("Add or delete words", text: $word)
                 .padding()
                 .frame(width: 300, height: 50)
@@ -80,6 +82,7 @@ struct AnalyticsView: View {
                     tuples.append((num, key))
                 }
             }
+            totalCount = Double(min(user.totalScore, 50))
         }
         tuples.sort(by: {$0.freq > $1.freq})
     }
@@ -125,6 +128,11 @@ struct AnalyticsView: View {
                         user.profanitySet.append(copy)
                     }
                     user.freqMap[word.lowercased()] = nil
+                    user.totalScore = 0
+                    for key in user.freqMap.keys {
+                        user.totalScore = user.totalScore + (user.freqMap[key] ?? 0)
+                    }
+                    print(user.freqMap)
                 }
             } else {
                 incorrectInfo = 2
