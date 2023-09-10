@@ -13,17 +13,26 @@ struct MeetingView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                Button("Analytics"){
-                    analyticsShow = true
-                }
+            Image("background").resizable()
+                .edgesIgnoringSafeArea(.all)
+            VStack(spacing: 2){
                 MeetingTimerView()
-                Button("Logout"){
-                    logout = true
+                HStack {
+                    Button("Analytics"){
+                        analyticsShow = true
+                    }.foregroundColor(.white)
+                        .frame(width: 130, height: 50)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                    Button("Logout"){
+                        logout = true
+                    }.foregroundColor(.white)
+                        .frame(width: 130, height: 50)
+                        .background(Color.blue)
+                        .cornerRadius(10)
                 }
             }
         }
-        .padding()
         .navigationBarTitleDisplayMode(.inline)
         NavigationLink(destination: AnalyticsView(), isActive: $analyticsShow){
         }.navigationBarBackButtonHidden(true)

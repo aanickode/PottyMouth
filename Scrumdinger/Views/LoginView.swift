@@ -21,10 +21,13 @@ struct LoginView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                Color.black.ignoresSafeArea()
+                Image("background").resizable()
+                    .scaledToFill().edgesIgnoringSafeArea(.all)
                 
                 VStack{
-                    Text("Sign In")
+                    Image("logo").resizable()
+                        .frame(width: 130, height: 130)
+                    Text("PottyMouth©")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .bold()
@@ -42,20 +45,22 @@ struct LoginView: View {
                             .background()
                             .cornerRadius(10)
                             .border(.red, width: CGFloat(incorrectInfo))
-                        Button("Login"){
-                            checkLogin(username: username, password: password)
+                        HStack{
+                            Button("Login"){
+                                checkLogin(username: username, password: password)
+                            }
+                            .foregroundColor(.white)
+                            .frame(width: 130, height: 50)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                            Button("Sign Up"){
+                                signInScreen = true
+                            }
+                            .foregroundColor(.white)
+                            .frame(width: 130, height: 50)
+                            .background(Color.blue)
+                            .cornerRadius(10)
                         }
-                        .foregroundColor(.white)
-                        .frame(width: 200, height: 50)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        Button("Sign Up"){
-                            signInScreen = true
-                        }
-                        .foregroundColor(.white)
-                        .frame(width: 200, height: 50)
-                        .background(Color.blue)
-                        .cornerRadius(10)
                     }
                     NavigationLink(destination: MeetingView().navigationBarBackButtonHidden(true), isActive: $showScreen){
                     }.navigationBarBackButtonHidden(true)

@@ -20,10 +20,11 @@ struct SignInView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                Color.black.ignoresSafeArea()
+                Image("background").resizable()
+                    .scaledToFill().edgesIgnoringSafeArea(.all)
                 
                 VStack{
-                    Text("Sign Up")
+                    Text("Create Account")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .bold()
@@ -41,7 +42,7 @@ struct SignInView: View {
                             .background()
                             .cornerRadius(10)
                             .border(.red, width: CGFloat(incorrectInfo))
-                        Button("Next"){
+                        Button("Choose Profanity"){
                             checkLogin(username: username, password: password)
                         }
                         .foregroundColor(.white)

@@ -19,35 +19,42 @@ struct ProfanitySetView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                Color.black.ignoresSafeArea()
-                VStack{
+                Image("background").resizable()
+                    .scaledToFill().edgesIgnoringSafeArea(.all)
+                VStack(spacing: 15){
+                    Spacer().frame(height: 10)
                     Text("Choose Your Profanity!")
-                        .font(.largeTitle)
+                        .font(.system(size: 30))
                         .foregroundColor(.white)
                         .bold()
                         .padding()
-                    TextField("Word", text: $word)
+                    TextField("Input Word", text: $word)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background()
                         .cornerRadius(10)
-                    Button("Add"){
-                        appendWord(word: word)
+                
+                    HStack{
+                        Button("Add"){
+                            appendWord(word: word)
+                        }
+                        .foregroundColor(.white)
+                        .frame(width: 140, height: 50)
+                        .background(Color.blue.opacity(0.4))
+                        .cornerRadius(10)
+                        Button("Finish"){
+                            completeSignUp()
+                        }
+                        .foregroundColor(.white)
+                        .frame(width: 100, height: 50)
+                        .background(Color.blue.opacity(0.4))
+                        .cornerRadius(10)
                     }
-                    .foregroundColor(.white)
-                    .frame(width: 200, height: 50)
-                    .background(Color.blue)
-                    .cornerRadius(10)
+                    Spacer().frame(height: 15)
                     ForEach(profanityList, id: \.self) {word in
                         Text(word).foregroundColor(.white)
                     }
-                    Button("Finish"){
-                        completeSignUp()
-                    }
-                    .foregroundColor(.white)
-                    .frame(width: 200, height: 50)
-                    .background(Color.blue)
-                    .cornerRadius(10)
+                    
                 }
                 NavigationLink(destination: MeetingView().navigationBarBackButtonHidden(true), isActive: $isFinished){
                 }.navigationBarBackButtonHidden(true)

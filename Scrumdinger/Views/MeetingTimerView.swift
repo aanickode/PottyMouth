@@ -18,14 +18,22 @@ struct MeetingTimerView: View {
 
     
     var body: some View {
-        VStack {
-            Image("jar2").resizable()
-                .scaledToFit().overlay{
-                    VStack {
-                        Text("Profanity Count")
-                        Text("\(storedCount)")
+        ZStack{
+            Image("background").resizable()
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Image("jar2").resizable()
+                    .scaledToFit().overlay{
+                        VStack {
+                            Text("No-No Score").font(.system(size: 20))
+                                .foregroundColor(.white)
+                                .bold()
+                            Text("\(storedCount)").font(.system(size: 75))
+                                .foregroundColor(.white)
+                                .bold()
+                        }
                     }
-                }
+            }
         }
         .onAppear {
             startScrum()
