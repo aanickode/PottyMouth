@@ -35,7 +35,7 @@
 		A93E3F4A294D224A00B9708D /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		AA313BB529B69F0A00F4309A /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = "<group>"; };
 		AA7F3038294A878E005E1E9F /* AVPlayer+Ding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Ding.swift"; sourceTree = "<group>"; };
-		AAAE801C294793AB0099DABC /* Scrumdinger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrumdinger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAAE801C294793AB0099DABC /* PottyMouth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PottyMouth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAE801F294793AB0099DABC /* ScrumdingerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrumdingerApp.swift; sourceTree = "<group>"; };
 		AAAE8021294793AB0099DABC /* MeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingView.swift; sourceTree = "<group>"; };
 		AAAE8023294793AB0099DABC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		AAAE801D294793AB0099DABC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AAAE801C294793AB0099DABC /* Scrumdinger.app */,
+				AAAE801C294793AB0099DABC /* PottyMouth.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,9 +142,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AAAE801B294793AB0099DABC /* Scrumdinger */ = {
+		AAAE801B294793AB0099DABC /* PottyMouth */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AAAE802A294793AB0099DABC /* Build configuration list for PBXNativeTarget "Scrumdinger" */;
+			buildConfigurationList = AAAE802A294793AB0099DABC /* Build configuration list for PBXNativeTarget "PottyMouth" */;
 			buildPhases = (
 				AAAE8018294793AB0099DABC /* Sources */,
 				AAAE8019294793AB0099DABC /* Frameworks */,
@@ -154,13 +154,13 @@
 			);
 			dependencies = (
 			);
-			name = Scrumdinger;
+			name = PottyMouth;
 			packageProductDependencies = (
 				384FACED2AAD446D00FB20FD /* Realm */,
 				384FACEF2AAD446D00FB20FD /* RealmSwift */,
 			);
 			productName = Scrumdinger;
-			productReference = AAAE801C294793AB0099DABC /* Scrumdinger.app */;
+			productReference = AAAE801C294793AB0099DABC /* PottyMouth.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -194,7 +194,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AAAE801B294793AB0099DABC /* Scrumdinger */,
+				AAAE801B294793AB0099DABC /* PottyMouth */,
 			);
 		};
 /* End PBXProject section */
@@ -428,7 +428,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AAAE802A294793AB0099DABC /* Build configuration list for PBXNativeTarget "Scrumdinger" */ = {
+		AAAE802A294793AB0099DABC /* Build configuration list for PBXNativeTarget "PottyMouth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAAE802B294793AB0099DABC /* Debug */,
