@@ -4,11 +4,14 @@
 
 import SwiftUI
 import AVFoundation
+import RealmSwift
 
 struct MeetingTimerView: View {
     @StateObject var speechRecognizer = SpeechRecognizer()
     @State private var count : Int = 0
+    @State private var storedCount : Int = 0
     private var frequency: TimeInterval { 1.0 / 60.0 }
+    let realm = try! Realm()
     
     private var player: AVPlayer { AVPlayer.sharedDingPlayer }
 
@@ -20,6 +23,7 @@ struct MeetingTimerView: View {
                     VStack {
                         Text("Profanity Count")
                         Text("\(count)")
+                        Text("\(storedCount)")
                     }
                 }
         }
@@ -41,6 +45,13 @@ struct MeetingTimerView: View {
     
     private func update() {
         count = speechRecognizer.profanityCount
+        let savedUsername = UserDefaults.standard.object(forKey: "username") as? String ?? ""
+        let savedPassword = UserDefaults.standard.object(forKey: "password") as? String ?? ""
+        let users = realm.objects(UserInfo.self).where{
+            $0.password == savedPassword && $0.username == savedUsername
+        }
+        let user = users.first
+        storedCount = user?.totalScore ?? 0
     }
     
     private func startScrum() {

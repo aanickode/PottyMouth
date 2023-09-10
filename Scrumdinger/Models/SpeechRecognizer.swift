@@ -6,6 +6,7 @@ import Foundation
 import AVFoundation
 import Speech
 import SwiftUI
+import RealmSwift
 
 /// A helper for transcribing speech to text using SFSpeechRecognizer and AVAudioEngine.
 actor SpeechRecognizer: ObservableObject {
@@ -28,14 +29,15 @@ actor SpeechRecognizer: ObservableObject {
     @MainActor var transcript: String = ""
     @MainActor var profanityCount: Int = 0
     
-    private var profanity : Set = ["hello", "bye"]
+    private var profanity : Set = ["hello", "bye", "fuck", "bitch"]
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var task: SFSpeechRecognitionTask?
     private let recognizer: SFSpeechRecognizer?
-    private weak var timer: Timer?
-    private var frequency: TimeInterval { 1.0 / 60.0 }
+    let realm = try! Realm()
+    let users: Results<UserInfo>
     @MainActor var lastString: String = ""
+    @MainActor var oldScore: Int = 0
     
     /**
      Initializes a new speech recognizer. If this is the first time you've used the class, it
@@ -43,6 +45,14 @@ actor SpeechRecognizer: ObservableObject {
      */
     init() {
         recognizer = SFSpeechRecognizer()
+        let savedUsername = UserDefaults.standard.object(forKey: "username") as? String ?? ""
+        let savedPassword = UserDefaults.standard.object(forKey: "password") as? String ?? ""
+        users = realm.objects(UserInfo.self).where{
+            $0.password == savedPassword && $0.username == savedUsername
+        }
+        if let user = users.first {
+            oldScore = user.totalScore
+        }
         guard recognizer != nil else {
             transcribe(RecognizerError.nilRecognizer)
             return
@@ -152,12 +162,17 @@ actor SpeechRecognizer: ObservableObject {
     // comment
     nonisolated private func transcribe(_ message: String) {
         Task { @MainActor in
-            transcript = String(message.lowercased().suffix(message.count - lastString.count))
+            transcript = String(message.lowercased().suffix(max(message.count - lastString.count, 0)))
             print(transcript)
             let components = transcript.components(separatedBy: " ")
             for word in components {
                 if (await profanity.contains(word)) {
                     profanityCount = profanityCount + 1
+                }
+            }
+            if let user = users.first {
+                try! realm.write {
+                    user.totalScore = oldScore + profanityCount
                 }
             }
             lastString = message.lowercased()
