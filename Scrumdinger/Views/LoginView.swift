@@ -6,10 +6,7 @@
 //
 
 import SwiftUI
-<<<<<<< HEAD
-=======
 import RealmSwift
->>>>>>> b5ee9ab (Database changes)
 
 struct LoginView: View {
     
@@ -17,13 +14,10 @@ struct LoginView: View {
     @State private var password = ""
     @State private var incorrectInfo = 0
     @State private var showScreen = false
-<<<<<<< HEAD
-=======
     @State private var signInScreen = false
     let realm = try! Realm()
     let defaults = UserDefaults.standard
     
->>>>>>> b5ee9ab (Database changes)
     var body: some View {
         NavigationView{
             ZStack{
@@ -55,8 +49,6 @@ struct LoginView: View {
                         .frame(width: 200, height: 50)
                         .background(Color.blue)
                         .cornerRadius(10)
-<<<<<<< HEAD
-=======
                         Button("Sign Up"){
                             signInScreen = true
                         }
@@ -64,16 +56,11 @@ struct LoginView: View {
                         .frame(width: 200, height: 50)
                         .background(Color.blue)
                         .cornerRadius(10)
->>>>>>> b5ee9ab (Database changes)
-                        
                     }
                     NavigationLink(destination: MeetingView(), isActive: $showScreen){
                     }
-<<<<<<< HEAD
-=======
                     NavigationLink(destination: SignInView(), isActive: $signInScreen){
                     }
->>>>>>> b5ee9ab (Database changes)
                 }
             }
             .navigationBarHidden(true)
@@ -82,18 +69,6 @@ struct LoginView: View {
     }
     
     func checkLogin(username: String, password: String){
-<<<<<<< HEAD
-        if (username == "Arnav"){
-            incorrectInfo = 0
-            if (password == "Gattani"){
-                incorrectInfo = 0
-                showScreen = true
-            } else {
-                incorrectInfo = 2
-            }
-        } else {
-            incorrectInfo = 2
-=======
         let users = realm.objects(UserInfo.self)
         let user = users.where{
             $0.password == password && $0.username == username
@@ -105,7 +80,6 @@ struct LoginView: View {
             defaults.set(username, forKey: "username")
             defaults.set(password, forKey: "password")
             showScreen = true
->>>>>>> b5ee9ab (Database changes)
         }
     }
 }
