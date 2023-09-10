@@ -16,6 +16,7 @@ struct AnalyticsView: View {
     @State var tuples: [(freq:Int, wrds:String)] = []
     @State private var word = ""
     @State private var incorrectInfo = 0
+    private var frequency: TimeInterval { 1.0 / 60.0 }
     let realm = try! Realm()
 
     var body: some View {
@@ -56,6 +57,13 @@ struct AnalyticsView: View {
         }
         .onAppear(){
             self.loadFreq()
+            self.startTimer()
+        }
+    }
+    
+    private func startTimer() {
+        Timer.scheduledTimer(withTimeInterval: frequency, repeats: true) { timer in
+            loadFreq()
         }
     }
     

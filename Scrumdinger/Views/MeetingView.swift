@@ -26,7 +26,7 @@ struct MeetingView: View {
         .padding()
         .navigationBarTitleDisplayMode(.inline)
         NavigationLink(destination: AnalyticsView(), isActive: $analyticsShow){
-        }
+        }.navigationBarBackButtonHidden(true)
         NavigationLink(destination: LoginView().navigationBarBackButtonHidden(true), isActive: $logout){
         }.navigationBarBackButtonHidden(true)
     }

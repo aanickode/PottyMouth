@@ -60,10 +60,11 @@ struct LoginView: View {
                     NavigationLink(destination: MeetingView().navigationBarBackButtonHidden(true), isActive: $showScreen){
                     }.navigationBarBackButtonHidden(true)
                     NavigationLink(destination: SignInView(), isActive: $signInScreen){
-                    }
+                    }.navigationBarBackButtonHidden(true)
                 }
             }
             .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         }
         
     }

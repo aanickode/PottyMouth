@@ -53,6 +53,7 @@ struct ProfanitySetView: View {
                 }.navigationBarBackButtonHidden(true)
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
     
     func appendWord(word: String) {

@@ -31,9 +31,6 @@ struct MeetingTimerView: View {
             startScrum()
             startTimer()
         }
-        .onDisappear {
-            endScrum()
-        }
     }
     
     private func startTimer() {
