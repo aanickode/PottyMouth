@@ -37,7 +37,7 @@ actor SpeechRecognizer: ObservableObject {
     let users: Results<UserInfo>
     @MainActor var lastString: String = ""
     @MainActor var oldScore: Int = 0
-    private var profanitySet: [String] = []
+    @MainActor var profanitySet: [String] = []
     
     /**
      Initializes a new speech recognizer. If this is the first time you've used the class, it
@@ -56,7 +56,6 @@ actor SpeechRecognizer: ObservableObject {
                 profanitySet.append(word)
             }
         }
-        print(profanitySet)
         guard recognizer != nil else {
             transcribe(RecognizerError.nilRecognizer)
             return
@@ -76,6 +75,12 @@ actor SpeechRecognizer: ObservableObject {
         }
     }
     
+    @MainActor func resetProfanity() {
+        Task {
+            await getProfanity()
+        }
+    }
+    
     @MainActor func startTranscribing() {
         Task {
             await transcribe()
@@ -91,6 +96,17 @@ actor SpeechRecognizer: ObservableObject {
     @MainActor func stopTranscribing() {
         Task {
             await reset()
+        }
+    }
+    
+    private func getProfanity() {
+        Task {@MainActor in
+            if let user = users.first {
+                profanitySet = []
+                for word in user.profanitySet {
+                    profanitySet.append(word)
+                }
+            }
         }
     }
     
@@ -187,7 +203,6 @@ actor SpeechRecognizer: ObservableObject {
                         user.freqMap[key] = (user.freqMap[key] ?? 0) + map[key]!
                     }
                 }
-                print(user.freqMap)
             }
             lastString = message.lowercased()
         }

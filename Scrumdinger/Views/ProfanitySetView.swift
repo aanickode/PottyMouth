@@ -70,17 +70,11 @@ struct ProfanitySetView: View {
             $0.password == savedPassword && $0.username == savedUsername
         }
         if let user = users.first {
-            print(user.profanitySet)
             try! realm.write {
                 for word in profanityList {
                     user.profanitySet.append(word)
                 }
             }
-            print(user.profanitySet)
-        }
-        if let user = users.first {
-            print("second")
-            print(user.profanitySet)
         }
     }
 }

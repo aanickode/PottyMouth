@@ -37,7 +37,6 @@ struct MeetingTimerView: View {
     }
     
     private func startTimer() {
-        print("timer created")
         Timer.scheduledTimer(withTimeInterval: frequency, repeats: true) { timer in
             update()
         }
@@ -52,6 +51,7 @@ struct MeetingTimerView: View {
         }
         let user = users.first
         storedCount = user?.totalScore ?? 0
+        speechRecognizer.resetProfanity()
     }
     
     private func startScrum() {
