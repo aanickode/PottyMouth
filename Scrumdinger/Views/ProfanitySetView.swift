@@ -49,8 +49,8 @@ struct ProfanitySetView: View {
                     .background(Color.blue)
                     .cornerRadius(10)
                 }
-                NavigationLink(destination: MeetingView(), isActive: $isFinished){
-                }
+                NavigationLink(destination: MeetingView().navigationBarBackButtonHidden(true), isActive: $isFinished){
+                }.navigationBarBackButtonHidden(true)
             }
         }
     }

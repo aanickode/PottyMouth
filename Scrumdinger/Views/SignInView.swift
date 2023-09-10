@@ -50,8 +50,8 @@ struct SignInView: View {
                         .cornerRadius(10)
                         
                     }
-                    NavigationLink(destination: ProfanitySetView(), isActive: $signUpComplete){
-                    }
+                    NavigationLink(destination: ProfanitySetView().navigationBarBackButtonHidden(true), isActive: $signUpComplete){
+                    }.navigationBarBackButtonHidden(true)
                 }
             }
             .navigationBarHidden(true)

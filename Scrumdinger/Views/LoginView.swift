@@ -57,8 +57,8 @@ struct LoginView: View {
                         .background(Color.blue)
                         .cornerRadius(10)
                     }
-                    NavigationLink(destination: MeetingView(), isActive: $showScreen){
-                    }
+                    NavigationLink(destination: MeetingView().navigationBarBackButtonHidden(true), isActive: $showScreen){
+                    }.navigationBarBackButtonHidden(true)
                     NavigationLink(destination: SignInView(), isActive: $signInScreen){
                     }
                 }

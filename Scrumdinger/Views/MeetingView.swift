@@ -7,6 +7,7 @@ import AVFoundation
 
 struct MeetingView: View {
     @State var analyticsShow = false
+    @State var logout = false
     
     private var player: AVPlayer { AVPlayer.sharedDingPlayer }
     
@@ -17,12 +18,17 @@ struct MeetingView: View {
                     analyticsShow = true
                 }
                 MeetingTimerView()
+                Button("Logout"){
+                    logout = true
+                }
             }
         }
         .padding()
         .navigationBarTitleDisplayMode(.inline)
         NavigationLink(destination: AnalyticsView(), isActive: $analyticsShow){
         }
+        NavigationLink(destination: LoginView().navigationBarBackButtonHidden(true), isActive: $logout){
+        }.navigationBarBackButtonHidden(true)
     }
 }
 
