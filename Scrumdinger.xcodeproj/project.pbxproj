@@ -12,6 +12,7 @@
 		384FACF62AAD499200FB20FD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384FACF52AAD499200FB20FD /* LoginView.swift */; };
 		384FACF72AAD58E100FB20FD /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384FACF12AAD46E300FB20FD /* UserInfo.swift */; };
 		384FACF92AAD5D7600FB20FD /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384FACF82AAD5D7600FB20FD /* SignInView.swift */; };
+		384FACFB2AAD743B00FB20FD /* ProfanitySetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384FACFA2AAD743B00FB20FD /* ProfanitySetView.swift */; };
 		A93E3F47294D1E5600B9708D /* MeetingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E3F46294D1E5600B9708D /* MeetingTimerView.swift */; };
 		A93E3F4B294D224A00B9708D /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E3F4A294D224A00B9708D /* SpeechRecognizer.swift */; };
 		AA313BB629B69F0A00F4309A /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA313BB529B69F0A00F4309A /* ding.wav */; };
@@ -28,6 +29,7 @@
 		384FACF12AAD46E300FB20FD /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		384FACF52AAD499200FB20FD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		384FACF82AAD5D7600FB20FD /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		384FACFA2AAD743B00FB20FD /* ProfanitySetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfanitySetView.swift; sourceTree = "<group>"; };
 		A93E3F46294D1E5600B9708D /* MeetingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingTimerView.swift; sourceTree = "<group>"; };
 		A93E3F4A294D224A00B9708D /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		AA313BB529B69F0A00F4309A /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				AAAE8021294793AB0099DABC /* MeetingView.swift */,
 				384FACF52AAD499200FB20FD /* LoginView.swift */,
 				384FACF82AAD5D7600FB20FD /* SignInView.swift */,
+				384FACFA2AAD743B00FB20FD /* ProfanitySetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				A93E3F4B294D224A00B9708D /* SpeechRecognizer.swift in Sources */,
 				384FACF72AAD58E100FB20FD /* UserInfo.swift in Sources */,
 				384FACF92AAD5D7600FB20FD /* SignInView.swift in Sources */,
+				384FACFB2AAD743B00FB20FD /* ProfanitySetView.swift in Sources */,
 				AAAE8020294793AB0099DABC /* ScrumdingerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

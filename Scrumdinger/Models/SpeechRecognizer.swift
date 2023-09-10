@@ -29,7 +29,6 @@ actor SpeechRecognizer: ObservableObject {
     @MainActor var transcript: String = ""
     @MainActor var profanityCount: Int = 0
     
-    private var profanity : Set = ["hello", "bye", "fuck", "bitch"]
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var task: SFSpeechRecognitionTask?
@@ -38,6 +37,7 @@ actor SpeechRecognizer: ObservableObject {
     let users: Results<UserInfo>
     @MainActor var lastString: String = ""
     @MainActor var oldScore: Int = 0
+    private var profanitySet: [String] = []
     
     /**
      Initializes a new speech recognizer. If this is the first time you've used the class, it
@@ -52,7 +52,11 @@ actor SpeechRecognizer: ObservableObject {
         }
         if let user = users.first {
             oldScore = user.totalScore
+            for word in user.profanitySet {
+                profanitySet.append(word)
+            }
         }
+        print(profanitySet)
         guard recognizer != nil else {
             transcribe(RecognizerError.nilRecognizer)
             return
@@ -163,10 +167,9 @@ actor SpeechRecognizer: ObservableObject {
     nonisolated private func transcribe(_ message: String) {
         Task { @MainActor in
             transcript = String(message.lowercased().suffix(max(message.count - lastString.count, 0)))
-            print(transcript)
             let components = transcript.components(separatedBy: " ")
             for word in components {
-                if (await profanity.contains(word)) {
+                if (await profanitySet.contains(word)) {
                     profanityCount = profanityCount + 1
                 }
             }

@@ -41,7 +41,7 @@ struct SignInView: View {
                             .background()
                             .cornerRadius(10)
                             .border(.red, width: CGFloat(incorrectInfo))
-                        Button("Sign Up"){
+                        Button("Next"){
                             checkLogin(username: username, password: password)
                         }
                         .foregroundColor(.white)
@@ -50,7 +50,7 @@ struct SignInView: View {
                         .cornerRadius(10)
                         
                     }
-                    NavigationLink(destination: MeetingView(), isActive: $signUpComplete){
+                    NavigationLink(destination: ProfanitySetView(), isActive: $signUpComplete){
                     }
                 }
             }

@@ -22,7 +22,6 @@ struct MeetingTimerView: View {
                 .scaledToFit().overlay{
                     VStack {
                         Text("Profanity Count")
-                        Text("\(count)")
                         Text("\(storedCount)")
                     }
                 }
