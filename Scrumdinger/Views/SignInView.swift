@@ -50,7 +50,7 @@ struct SignInView: View {
                         .cornerRadius(10)
                         
                     }
-                    NavigationLink(destination: MeetingView(), isActive: $signUpComplete){
+                    NavigationLink(destination: ProfanitySetView(), isActive: $signUpComplete){
                     }
                 }
             }
