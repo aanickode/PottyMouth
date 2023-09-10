@@ -152,7 +152,7 @@ actor SpeechRecognizer: ObservableObject {
     // comment
     nonisolated private func transcribe(_ message: String) {
         Task { @MainActor in
-            transcript = String(message.lowercased().suffix(message.count - lastString.count))
+            transcript = String(message.lowercased().suffix(max(message.count - lastString.count, 0)))
             print(transcript)
             let components = transcript.components(separatedBy: " ")
             for word in components {
