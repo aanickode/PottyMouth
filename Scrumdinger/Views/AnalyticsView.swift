@@ -21,46 +21,53 @@ struct AnalyticsView: View {
     let realm = try! Realm()
 
     var body: some View {
-        VStack{
-            Text("Try to keep your daily profanity use below 50 words!").font(.system(size:12))
-            ProgressView(value: totalCount, total: 50.0).padding()
-            TextField("Add or delete words", text: $word)
-                .padding()
-                .frame(width: 300, height: 50)
-                .border(.black)
-                .foregroundColor(.black)
-                .cornerRadius(10)
-                .border(.red, width: CGFloat(incorrectInfo))
-            HStack{
-                Button("Add"){
-                    addWord(word: word)
+        ZStack{
+            Image("background").resizable()
+                .scaledToFill().edgesIgnoringSafeArea(.all)
+            VStack{
+                Text("Try to keep your daily profanity use below 50 words!").font(.system(size:12))
+                    .foregroundColor(.white)
+                    .bold()
+                ProgressView(value: totalCount, total: 50.0).frame(width: 250)
+                Spacer().frame(height:50)
+                TextField("Add or delete words", text: $word)
+                    .padding()
+                    .frame(width: 300, height: 50)
+                    .border(.black)
+                    .foregroundColor(.black)
+                    .cornerRadius(10)
+                    .border(.red, width: CGFloat(incorrectInfo))
+                HStack{
+                    Button("Add"){
+                        addWord(word: word)
+                    }
+                    .foregroundColor(.white)
+                    .frame(width: 130, height: 50)
+                    .background(Color.blue.opacity(0.4))
+                    .cornerRadius(10)
+                    Button("Delete"){
+                        deleteWord(word: word)
+                    }
+                    .foregroundColor(.white)
+                    .frame(width: 130, height: 50)
+                    .background(Color.blue.opacity(0.4))
+                    .cornerRadius(10)
                 }
-                .foregroundColor(.black)
-                .frame(width: 100, height: 25)
-                .background(Color.blue)
-                .cornerRadius(10)
-                Button("Delete"){
-                    deleteWord(word: word)
-                }
-                .foregroundColor(.black)
-                .frame(width: 100, height: 25)
-                .background(Color.blue)
-                .cornerRadius(10)
-            }
-            Text("Frequency Counter")
-            
-            ForEach(0...tuples.count, id: \.self) {idx in
-                if (idx != tuples.count) {
-                    HStack(spacing: 10){
-                        Text(tuples[idx].wrds)
-                        Text("\(tuples[idx].freq)")
+                Text("Frequency Counter")
+                
+                ForEach(0...tuples.count, id: \.self) {idx in
+                    if (idx != tuples.count) {
+                        HStack(spacing: 10){
+                            Text(tuples[idx].wrds)
+                            Text("\(tuples[idx].freq)")
+                        }
                     }
                 }
             }
-        }
-        .onAppear(){
-            self.loadFreq()
-            self.startTimer()
+            .onAppear(){
+                self.loadFreq()
+                self.startTimer()
+            }
         }
     }
     

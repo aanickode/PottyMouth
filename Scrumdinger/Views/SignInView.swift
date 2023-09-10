@@ -47,7 +47,7 @@ struct SignInView: View {
                         }
                         .foregroundColor(.white)
                         .frame(width: 200, height: 50)
-                        .background(Color.blue)
+                        .background(Color.blue.opacity(0.4))
                         .cornerRadius(10)
                         
                     }
