@@ -11,3 +11,5 @@ We built the application to run on iOS using Swift. We used the MongoDB Realm da
 We hope to extend our use cases by creating packages for educational and charity contexts. Additionally, we plan on incorporating apps such as Venmo so users can possibly donate directly top charities depending on their score and so, we could add them to a weekly leaderboard to create a thriving online community on PottyMouth! 
 
 In order to run, import the project on the GitHub link to Xcode and then run the iPhone simulator.
+
+Have fun not swearing!!!!
