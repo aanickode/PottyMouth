@@ -12,4 +12,4 @@ We hope to extend our use cases by creating packages for educational and charity
 
 In order to run, import the project on the GitHub link to Xcode and then run the iPhone simulator.
 
-Have fun not swearing!!!!
+Have fun not swearing!!!! Making one last goodbye!
